@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="location"
+            type="project.fragments.viewpager2_demo_imageslider.model.TravelLocation" />
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/kbvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:loadImage="@{location.imageUrl}" />
+
+            <LinearLayout
+                android:id="@+id/llRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_star_rating"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_star"
+                    app:tint="#ffffff" />
+
+                <TextView
+                    android:id="@+id/tvStarRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="2dp"
+                    android:text="@{`` + location.starRating}"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    tools:text="3" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/vLocationContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#d6000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLocationTitle" />
+
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="20dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="@id/tvLocationDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLocationDescription"
+                app:tint="#ffffff" />
+
+            <TextView
+                android:id="@+id/tvLocationDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:text="@{location.location}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivLocation"
+                tools:text="The capital city of Serbia" />
+
+            <TextView
+                android:id="@+id/tvLocationTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="2dp"
+                android:paddingTop="4dp"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="@{location.title}"
+                app:layout_constraintBottom_toTopOf="@id/ivLocation"
+                tools:text="Belgrade" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
